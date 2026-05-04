@@ -7,7 +7,7 @@ const experiences = [
     company: "Quipper",
     role: "Product Designer",
     location: "Remote",
-    period: "2022 - Now",
+    period: "2022 - 2026",
     bullets: [
       "Led design system implementation across 3 platform",
       "Improved assignment creation and delivery efficiency for teachers by 52.6%, reducing the steps 19 to 9.",
@@ -119,7 +119,7 @@ export function LeftPanelTop() {
           </StaggeredLine>
           <StaggeredLine delay={t()}>
             <p className="text-[#9c9c9c]" style={{ fontSize: "18px", lineHeight: 1.618 }}>
-              Currently working at Quipper and previously at Antikode.
+              Currently self-employed, previously at Quipper and Antikode.
             </p>
           </StaggeredLine>
           <StaggeredLine delay={t()}>
