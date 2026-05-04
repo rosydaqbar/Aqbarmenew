@@ -164,6 +164,20 @@ export function LeftPanelTop() {
 export function LeftPanelBottom() {
   return (
     <div className="flex w-full flex-col bg-[#1b1b1b]">
+      <div className="flex flex-col items-start gap-3 pt-8">
+        <p className="text-[#9c9c9c]" style={{ fontSize: "14px", lineHeight: 1.618 }}>
+          Want to see more?
+        </p>
+        <a
+          href="https://figma.com/design/JB75Gv6OcjDvlcleJ7bX9X/Aqbar-s-Work--Full-?node-id=2001-2&t=VW0tXu4rAhuLOFZ3-1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex rounded-lg bg-gradient-to-b from-[rgba(36,36,36,0.5)] to-[rgba(28,22,22,0.25)] px-3 py-1 text-white shadow-[0px_1px_0px_rgba(0,0,0,0.05),0px_4px_2px_rgba(0,0,0,0.05),0px_10px_5px_rgba(0,0,0,0.1)] backdrop-blur transition hover:brightness-125"
+          style={{ fontSize: "14px", lineHeight: "20px" }}
+        >
+          View my works
+        </a>
+      </div>
       <div className="py-2 pt-8">
         <div className="rounded-lg bg-gradient-to-b from-[rgba(22,22,22,0.5)] to-[rgba(22,22,22,0.6)] px-8 py-6">
           <div className="flex flex-col gap-2">

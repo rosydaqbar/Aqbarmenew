@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { ImageCarousel } from "./ImageCarousel";
 import imgImage31 from "../../imports/Aqbar/ddfcb7e94b53ba06761be323aff6d443daa4eb64.png";
 import imgImage32 from "../../imports/Aqbar/f94e06675dddc9e0c1cd2bb644337d4a792cf1e5.png";
@@ -12,13 +12,30 @@ import imgDominus2 from "../../imports/image-2.png";
 import imgAxis2 from "../../imports/image-3.png";
 import imgInnovate2 from "../../imports/image-4.png";
 import imgInnovate3 from "../../imports/image-5.png";
+import imgQuipper1 from "../../imports/image-6.png";
+import imgQuipper2 from "../../imports/image-7.png";
+import imgQuipper3 from "../../imports/image-8.png";
 
 const items: {
   title: string;
-  description: string;
+  description: ReactNode;
   images: string[];
   link?: string;
 }[] = [
+  {
+    title: "Quipper",
+    description: (
+      <>
+        Cheating detection monitor platform, Students periodic reports, Content search, Syllabus, and{" "}
+        <span className="inline-flex items-center gap-1 align-baseline">
+          <Sparkles size={12} className="text-white" />
+          AI import questions
+        </span>
+      </>
+    ),
+    images: [imgQuipper1, imgQuipper2, imgQuipper3],
+    link: "https://figma.com/design/YxcKrmNhTEAwHZfYOCLGJS/Quipper-Backup?node-id=6-186714&t=Z9mzQKNp5wlFHkKS-1",
+  },
   {
     title: "Bitwyre",
     description: "Landing Page, Market Monitor, and Leaderboard.",
