@@ -9,9 +9,12 @@ const experiences = [
     location: "Remote",
     period: "2022 - 2026",
     bullets: [
-      "Led design system implementation across 3 platform",
-      "Improved assignment creation and delivery efficiency for teachers by 52.6%, reducing the steps 19 to 9.",
-      "Designed a cheating-activity detection and bulk follow-up action for teachers, reducing task completion time by over 85% and making the task 6.7× faster to complete.",
+      "Revamped the entire design system in Figma by modernizing outdated design standards, improving overall quality, and increasing design delivery speed by 40%.",
+      "Conducted to Product-Market Fit research to identify key user problems and help prioritize product roadmap decisions.",
+      "Revamped the user interface of the QLink Learning Management System (LMS) for users in Indonesia and the Philippines, contributing to increased in overall teacher participation.",
+      "Designed new Periodic Report a feature to compare related diagnostic report which led to a 50% success rate according to Usability Test.",
+      "Improved assignment creation and delivery for teachers by reducing the flow from 19 steps to 9 steps, achieving a 52.6% reduction in required steps.",
+      "Designed a student cheating-activity detection and bulk follow-up workflow for teachers, based on research and usability testing, reducing task completion time by over 85% and making the task 6.7× faster to complete.",
     ],
   },
   {
