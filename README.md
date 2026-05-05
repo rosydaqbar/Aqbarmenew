@@ -1,7 +1,7 @@
 
-  # Untitled
+  # Personal
 
-  This is a code bundle for Untitled. The original project is available at https://www.figma.com/design/I8174F4B9OUNoTnvhSUPet/Untitled.
+  This is a code bundle for Personal. The original project is available at https://www.figma.com/design/I8174F4B9OUNoTnvhSUPet/Personal.
 
   ## Running the code
 

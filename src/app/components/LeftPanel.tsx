@@ -19,7 +19,11 @@ const experiences = [
     role: "UI/UX Designer",
     location: "Jakarta, Indonesia",
     period: "2018 - 2021",
-    bullets: ["Led design system for AXISNet reducing overall design delivery and efficiency."],
+    bullets: [
+      "Led design system for AXISNet reducing overall design delivery and efficiency.",
+      "Revamped the AXISNet membership feature (ALifetime), which led to a 40% increase in visits and a 70% increase in bonus items claimed.",
+      "Designed Paket Suka-Suka for AXISNet, a customizable internet package feature that achieved 84% user satisfaction based on survey results.",
+    ],
   },
   {
     company: "Syntac",
