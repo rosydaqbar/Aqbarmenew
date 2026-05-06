@@ -99,6 +99,9 @@ export default function StudyCaseQuipper() {
         className="fixed left-[34px] top-[24px] z-50 h-[36px] w-[88px] rounded-lg"
       />
       <style>{`
+        .study-page [class*="Space_Mono"] { font-family: 'Space Mono', ui-monospace, monospace !important; }
+        .study-page [class*="Space_Mono:Bold"] { font-weight: 700 !important; }
+        .study-page [class*="Space_Mono:Regular"] { font-weight: 400 !important; }
         .study-page [class*="w-[780px]"] { width: 100% !important; max-width: 780px; }
         .study-page [class*="w-[666px]"] { width: 100% !important; max-width: 666px; }
         .study-page [class*="w-[562px]"] { width: 100% !important; max-width: 562px; }
