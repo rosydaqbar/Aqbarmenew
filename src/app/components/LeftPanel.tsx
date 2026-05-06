@@ -1,6 +1,14 @@
 import { StaggeredLine } from "./StaggeredLine";
 import { RotatingServiceText } from "./RotatingServiceText";
 import { IcChevron } from "./IcChevron";
+import { Facebook, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router";
+
+const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/rosydaqbar/", Icon: Facebook },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/rosydaqbar/", Icon: Linkedin },
+  { label: "X", href: "https://x.com/nedar_r", Icon: Twitter },
+];
 
 const experiences = [
   {
@@ -9,6 +17,10 @@ const experiences = [
     location: "Remote",
     period: "2022 - 2026",
     bullets: [
+      {
+        text: "Improved the question import experience by redesigning the flow from a template-based upload into an AI-assisted document upload, increasing completion rate from 28.45% to 79.52%.",
+        cta: { label: "Read Study Case", href: "/study/quipper-import" },
+      },
       "Revamped the entire design system in Figma by modernizing outdated design standards, improving overall quality, and increasing design delivery speed by 40%.",
       "Conducted to Product-Market Fit research to identify key user problems and help prioritize product roadmap decisions.",
       "Revamped the user interface of the QLink Learning Management System (LMS) for users in Indonesia and the Philippines, contributing to increased in overall teacher participation.",
@@ -78,16 +90,44 @@ function ExperienceRow({ exp }: { exp: (typeof experiences)[number] }) {
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        {exp.bullets.map((b, i) => (
-          <div key={i} className="flex items-start gap-3">
-            <div className="flex h-6 items-center py-1">
-              <IcChevron size={16} />
+        {exp.bullets.map((b, i) => {
+          const isObj = typeof b !== "string";
+          const text = isObj ? b.text : b;
+          const cta = isObj ? b.cta : undefined;
+          return (
+            <div key={i} className="flex items-start gap-3">
+              <div className="flex h-6 items-center py-1">
+                <IcChevron size={16} />
+              </div>
+              <div className="flex flex-1 flex-col items-start gap-2">
+                <p className="text-[#9c9c9c]" style={{ fontSize: "14px", lineHeight: 1.618 }}>
+                  {text}
+                </p>
+                {cta && (
+                  cta.href.startsWith("/") ? (
+                    <Link
+                      to={cta.href}
+                      className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-3 py-1 text-[#e2e2e2] transition hover:border-white/30 hover:text-white"
+                      style={{ fontSize: "14px", lineHeight: "20px" }}
+                    >
+                      {cta.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={cta.href || "#"}
+                      target={cta.href ? "_blank" : undefined}
+                      rel={cta.href ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-3 py-1 text-[#e2e2e2] transition hover:border-white/30 hover:text-white"
+                      style={{ fontSize: "14px", lineHeight: "20px" }}
+                    >
+                      {cta.label}
+                    </a>
+                  )
+                )}
+              </div>
             </div>
-            <p className="flex-1 text-[#9c9c9c]" style={{ fontSize: "14px", lineHeight: 1.618 }}>
-              {b}
-            </p>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -109,7 +149,23 @@ export function LeftPanelTop() {
                 Aqbar
               </span>
             </div>
-            <PrimaryButton>Get in Touch</PrimaryButton>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-[#9c9c9c] transition hover:bg-white/5 hover:text-white"
+                  >
+                    <Icon size={16} />
+                  </a>
+                ))}
+              </div>
+              <PrimaryButton>Get in Touch</PrimaryButton>
+            </div>
           </div>
         </StaggeredLine>
 
