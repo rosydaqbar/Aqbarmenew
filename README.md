@@ -1,11 +1,37 @@
+# Aqbar Personal Site
 
-  # Personal
+React/Vite implementation of Rosyd Aqbar's personal portfolio and case-study site.
 
-  This is a code bundle for Personal. The original project is available at https://www.figma.com/design/I8174F4B9OUNoTnvhSUPet/Personal.
+## Structure
 
-  ## Running the code
+```txt
+src/
+  App.tsx
+  main.tsx
+  routes.tsx
+  pages/        Route-level pages
+  components/   Reusable React components
+  data/         Site content and project data
+  assets/       Images and icon path data
+  styles/       Global styles, fonts, and Tailwind entry
+```
 
-  Run `npm i` to install the dependencies.
+## Development
 
-  Run `npm run dev` to start the development server.
-  
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
