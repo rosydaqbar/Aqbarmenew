@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ChevronIcon } from "./ChevronIcon";
@@ -17,6 +18,7 @@ const textWidth = "w-full max-w-[562px]";
 const bodyText = `${textWidth} text-[14px] leading-[1.618] text-white opacity-80`;
 const sectionTitle = `${textWidth} text-[16px] leading-[1.618] font-bold text-white`;
 const majorTitle = `${textWidth} text-[20px] leading-[1.618] font-bold text-white`;
+const studyCaseTitle = "179% Increase in Question Import Completion Rate in Quipper";
 
 function AnimatedBlock({ children, index }: { children: React.ReactNode; index: number }) {
   return (
@@ -45,7 +47,7 @@ function BackIcon() {
   );
 }
 
-function PageHeader() {
+function PageHeader({ showTitle }: { showTitle: boolean }) {
   return (
     <div className="sticky top-0 z-30 h-[83px] w-full shrink-0 rounded-bl-[8px] rounded-br-[8px] bg-[#1b1b1b]">
       <div className="flex h-full flex-col justify-center">
@@ -64,9 +66,19 @@ function PageHeader() {
                 Portfolio
               </p>
             </div>
-            <p className="shrink-0 whitespace-normal text-[12px] leading-[1.618] text-[#9c9c9c]">
-              Study Case • Quipper
-            </p>
+            <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-4 text-center">
+              <p className="shrink-0 whitespace-normal text-[12px] leading-[1.618] text-[#9c9c9c]">
+                Study Case • Quipper
+              </p>
+              <motion.p
+                initial={false}
+                animate={showTitle ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: -4, height: 0 }}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-[520px] overflow-hidden whitespace-nowrap text-[14px] font-bold leading-[1.618] text-[#e2e2e2]"
+              >
+                {studyCaseTitle}
+              </motion.p>
+            </div>
             <div className="hidden h-[26px] w-[183px] shrink-0 items-center gap-[16px] md:flex" />
           </div>
         </div>
@@ -75,11 +87,11 @@ function PageHeader() {
   );
 }
 
-function IntroTitle() {
+function IntroTitle({ titleRef }: { titleRef: React.RefObject<HTMLDivElement> }) {
   return (
-    <div className="flex w-full flex-col items-center gap-[8px] text-center leading-[1.618]">
+    <div ref={titleRef} className="flex w-full flex-col items-center gap-[8px] text-center leading-[1.618]">
       <p className="w-full max-w-[666px] text-[20px] font-bold text-[#e2e2e2] sm:text-[24px]">
-        179% Increase in Question Import Completion Rate in Quipper
+        {studyCaseTitle}
       </p>
       <p className="w-full max-w-[562px] text-[14px] text-white opacity-40">7~10 mins to read</p>
     </div>
@@ -241,8 +253,35 @@ function Footer() {
 }
 
 export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [showHeaderTitle, setShowHeaderTitle] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateHeaderTitle = () => {
+      const title = titleRef.current;
+      if (!title) return;
+      setShowHeaderTitle(title.getBoundingClientRect().bottom <= 83);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateHeaderTitle);
+    };
+
+    updateHeaderTitle();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   const blocks = [
-    <IntroTitle />,
+    <IntroTitle titleRef={titleRef} />,
     <OverviewSection />,
     <ImpactCard />,
     <div className="flex w-full flex-col items-center gap-[32px]">
@@ -334,7 +373,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
 
   return (
     <div className="flex min-h-[100dvh] w-full flex-col items-start gap-[10px] bg-[#1b1b1b]">
-      <PageHeader />
+      <PageHeader showTitle={showHeaderTitle} />
       <main className="w-full rounded-bl-[8px] rounded-br-[8px]">
         <div className="flex w-full flex-col items-center px-[clamp(16px,6vw,234px)] py-[16px]">
           <article className="flex w-full max-w-[780px] shrink-0 flex-col items-center gap-[48px] bg-[#1b1b1b] py-[8px]">
