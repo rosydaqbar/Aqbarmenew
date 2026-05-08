@@ -24,7 +24,7 @@ export function HoverImageCarousel({
   }, [hovered, images.length, intervalMs]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-[#09090b]">
+    <div className="relative h-full w-full overflow-hidden bg-site-image-bg">
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.img
           key={i}

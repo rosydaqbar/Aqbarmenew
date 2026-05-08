@@ -118,8 +118,8 @@ export default function Home() {
   if (!isDesktop) {
     return (
       <div
-        className="min-h-[100dvh] w-full bg-[#1b1b1b] px-4"
-        style={{ fontFamily: "'Space Mono', ui-monospace, monospace" }}
+        className="min-h-[100dvh] w-full bg-site-bg px-4"
+        style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
       >
         <div className="mx-auto flex max-w-[620px] flex-col">
           <PortfolioPrimaryContent />
@@ -132,8 +132,8 @@ export default function Home() {
 
   return (
     <div
-      className="h-[100dvh] w-full overflow-hidden bg-[#1b1b1b] px-4"
-      style={{ fontFamily: "'Space Mono', ui-monospace, monospace" }}
+      className="h-[100dvh] w-full overflow-hidden bg-site-bg px-4"
+      style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
     >
       <div className="flex h-full items-start gap-[10px]">
         <div ref={leftRef} className="h-full overflow-hidden">

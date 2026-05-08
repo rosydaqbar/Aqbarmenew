@@ -2,6 +2,22 @@
 
 :root {
   --font-size: 16px;
+  --site-bg: #f7f6f2;
+  --site-surface: #ffffff;
+  --site-surface-muted: #eceae3;
+  --site-surface-strong: #dedbd2;
+  --site-image-bg: #e9e7e1;
+  --site-text-primary: #1b1b1b;
+  --site-text-secondary: #5f5f5a;
+  --site-text-muted: #85847d;
+  --site-border: rgba(27, 27, 27, 0.18);
+  --site-divider: #cfcac0;
+  --site-button: #ffffff;
+  --site-button-hover: #e6e3da;
+  --site-card: #ffffff;
+  --site-card-muted: #eceae3;
+  --site-final-card: #ffffff;
+  --site-brand-mark: rgba(27, 27, 27, 0.55);
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -42,6 +58,22 @@
 }
 
 .dark {
+  --site-bg: #1b1b1b;
+  --site-surface: #1b1b1b;
+  --site-surface-muted: #242424;
+  --site-surface-strong: #2b2b2b;
+  --site-image-bg: #09090b;
+  --site-text-primary: #e2e2e2;
+  --site-text-secondary: #9c9c9c;
+  --site-text-muted: rgba(255, 255, 255, 0.4);
+  --site-border: rgba(255, 255, 255, 0.18);
+  --site-divider: #000000;
+  --site-button: #242424;
+  --site-button-hover: #303030;
+  --site-card: #242424;
+  --site-card-muted: #202020;
+  --site-final-card: #050505;
+  --site-brand-mark: rgba(255, 255, 255, 0.5);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -79,6 +111,21 @@
 }
 
 @theme inline {
+  --color-site-bg: var(--site-bg);
+  --color-site-surface: var(--site-surface);
+  --color-site-surface-muted: var(--site-surface-muted);
+  --color-site-surface-strong: var(--site-surface-strong);
+  --color-site-image-bg: var(--site-image-bg);
+  --color-site-button: var(--site-button);
+  --color-site-button-hover: var(--site-button-hover);
+  --color-site-card: var(--site-card);
+  --color-site-card-muted: var(--site-card-muted);
+  --color-site-primary: var(--site-text-primary);
+  --color-site-secondary: var(--site-text-secondary);
+  --color-site-muted: var(--site-text-muted);
+  --color-site-border: var(--site-border);
+  --color-site-divider: var(--site-divider);
+  --color-site-brand-mark: var(--site-brand-mark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

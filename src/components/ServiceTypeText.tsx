@@ -15,7 +15,7 @@ export function ServiceTypeText() {
 
   return (
     <span
-      className="relative inline-flex align-baseline overflow-hidden text-white"
+      className="relative inline-flex align-baseline overflow-hidden text-site-primary"
       style={{ minWidth: "11ch", height: "1.2em" }}
     >
       <AnimatePresence mode="wait">

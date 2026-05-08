@@ -15,9 +15,9 @@ type QuipperStudyCaseProps = {
 };
 
 const textWidth = "w-full max-w-[562px]";
-const bodyText = `${textWidth} text-[14px] leading-[1.618] text-white opacity-80`;
-const sectionTitle = `${textWidth} text-[16px] leading-[1.618] font-bold text-white`;
-const majorTitle = `${textWidth} text-[20px] leading-[1.618] font-bold text-white`;
+const bodyText = `${textWidth} text-[14px] leading-[1.618] text-site-primary opacity-80`;
+const sectionTitle = `${textWidth} text-[16px] leading-[1.618] font-bold text-site-primary`;
+const majorTitle = `${textWidth} text-[20px] leading-[1.618] font-bold text-site-primary`;
 const studyCaseTitle = "179% Increase in Question Import Completion Rate in Quipper";
 
 function AnimatedBlock({ children, index }: { children: React.ReactNode; index: number }) {
@@ -49,37 +49,37 @@ function BackIcon() {
 
 function PageHeader({ showTitle }: { showTitle: boolean }) {
   return (
-    <div className="sticky top-0 z-30 h-[83px] w-full shrink-0 rounded-bl-[8px] rounded-br-[8px] bg-[#1b1b1b]">
+    <div className="sticky top-0 z-30 h-[83px] w-full shrink-0 rounded-bl-[8px] rounded-br-[8px] bg-site-bg">
       <div className="flex h-full flex-col justify-center">
         <div className="flex h-full flex-col items-start justify-center px-[clamp(16px,4vw,34px)] py-[16px]">
-          <div className="flex h-[51px] w-full items-center justify-between bg-[#1b1b1b] py-[8px]">
+          <div className="flex h-[51px] w-full items-center justify-between bg-site-bg py-[8px]">
             <div className="flex items-center gap-[16px]">
               <Link
                 to="/"
                 aria-label="Back to portfolio"
-                className="flex items-center gap-[8px] rounded-[8px] bg-gradient-to-b from-[rgba(36,36,36,0.5)] from-[71.635%] to-[rgba(28,22,22,0.25)] px-[12px] py-[4px] text-white drop-shadow-[0px_1px_0px_rgba(0,0,0,0.05),0px_4px_2px_rgba(0,0,0,0.05),0px_10px_5px_rgba(0,0,0,0.1)] backdrop-blur-[10px] transition hover:brightness-125"
+                className="flex items-center gap-[8px] rounded-[8px] border border-site-border bg-site-button px-[12px] py-[4px] text-site-primary transition hover:bg-site-button-hover"
               >
                 <BackIcon />
                 <span className="text-[12px] leading-[20px]">Back</span>
               </Link>
-              <p className="shrink-0 whitespace-nowrap text-[16px] font-bold leading-[1.618] text-[#e2e2e2]">
+              <p className="shrink-0 whitespace-nowrap text-[16px] font-bold leading-[1.618] text-site-primary">
                 Portfolio
               </p>
             </div>
             <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-4 text-center">
-              <p className="shrink-0 whitespace-normal text-[12px] leading-[1.618] text-[#9c9c9c]">
+              <p className="shrink-0 whitespace-normal text-[12px] leading-[1.618] text-site-secondary">
                 Study Case • Quipper
               </p>
               <motion.p
                 initial={false}
                 animate={showTitle ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: -4, height: 0 }}
                 transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-[520px] overflow-hidden whitespace-nowrap text-[14px] font-bold leading-[1.618] text-[#e2e2e2]"
+                className="max-w-[520px] overflow-hidden whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary"
               >
                 {studyCaseTitle}
               </motion.p>
             </div>
-            <div className="hidden h-[26px] w-[183px] shrink-0 items-center gap-[16px] md:flex" />
+            <div className="flex h-[26px] w-[40px] shrink-0 items-center justify-end gap-[16px] md:w-[183px]" />
           </div>
         </div>
       </div>
@@ -90,10 +90,10 @@ function PageHeader({ showTitle }: { showTitle: boolean }) {
 function IntroTitle({ titleRef }: { titleRef: React.RefObject<HTMLDivElement> }) {
   return (
     <div ref={titleRef} className="flex w-full flex-col items-center gap-[8px] text-center leading-[1.618]">
-      <p className="w-full max-w-[666px] text-[20px] font-bold text-[#e2e2e2] sm:text-[24px]">
+      <p className="w-full max-w-[666px] text-[20px] font-bold text-site-primary sm:text-[24px]">
         {studyCaseTitle}
       </p>
-      <p className="w-full max-w-[562px] text-[14px] text-white opacity-40">7~10 mins to read</p>
+      <p className="w-full max-w-[562px] text-[14px] text-site-muted">7~10 mins to read</p>
     </div>
   );
 }
@@ -134,11 +134,11 @@ function OverviewSection() {
 
 function ImpactCard() {
   return (
-    <div className="w-full shrink-0 rounded-[8px] bg-gradient-to-b from-[rgba(22,22,22,0.5)] to-[rgba(22,22,22,0.6)]">
+    <div className="w-full shrink-0 rounded-[8px] border border-site-border bg-site-card">
       <div className="flex items-center justify-between px-[32px] py-[24px]">
         <div className="flex flex-1 flex-col items-center gap-[8px] text-center text-[14px]">
-          <p className="w-full max-w-[360px] leading-[1.618] text-[#9c9c9c]">As a result, the impact is</p>
-          <div className="w-full text-white">
+          <p className="w-full max-w-[360px] leading-[1.618] text-site-secondary">As a result, the impact is</p>
+          <div className="w-full text-site-primary">
             <p className="mb-0">
               <span className="leading-[1.618]">Completion rate increased from </span>
               <span className="font-bold leading-[1.618]">28.45% </span>
@@ -158,7 +158,7 @@ function ImpactCard() {
 
 function TextSection({ title, children, major = false }: { title: string; children: React.ReactNode; major?: boolean }) {
   return (
-    <div className="flex w-full flex-col items-center gap-[16px] text-white">
+    <div className="flex w-full flex-col items-center gap-[16px] text-site-primary">
       <p className={major ? majorTitle : sectionTitle}>{title}</p>
       <div className={bodyText}>{children}</div>
     </div>
@@ -180,9 +180,9 @@ function CaseImage({ src, rounded = false, onClick }: { src: string; rounded?: b
 
 function FlowStep({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full shrink-0 items-center justify-center rounded-[2px] bg-[#202020] px-[12px] py-[10px] relative">
-      <div aria-hidden="true" className="absolute inset-0 rounded-[2px] border border-black border-solid pointer-events-none" />
-      <p className="whitespace-normal text-[14px] leading-[1.618] text-white">{children}</p>
+    <div className="relative flex w-full shrink-0 items-center justify-center rounded-[2px] bg-site-surface-strong px-[12px] py-[10px]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[2px] border border-site-border border-solid" />
+      <p className="whitespace-normal text-[14px] leading-[1.618] text-site-primary">{children}</p>
     </div>
   );
 }
@@ -201,9 +201,9 @@ function FlowArrow() {
 
 function FlowCard({ steps, final = false }: { steps: string[]; final?: boolean }) {
   return (
-    <div className={`${final ? "bg-[#050505]" : "bg-gradient-to-b from-[rgba(22,22,22,0.5)] to-[rgba(22,22,22,0.6)]"} flex flex-col items-center gap-[16px] p-[24px] relative`}>
-      <div aria-hidden="true" className="absolute inset-0 border border-black border-solid pointer-events-none" />
-      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-white">The Flow</p>
+    <div className={`${final ? "bg-site-final-card" : "bg-site-card"} relative flex flex-col items-center gap-[16px] p-[24px]`}>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 border border-site-border border-solid" />
+      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Flow</p>
       <div className="flex w-full max-w-[410px] flex-col items-center gap-[8px]">
         {steps.map((step, index) => (
           <div key={step} className="flex w-full flex-col items-center gap-[8px]">
@@ -219,7 +219,7 @@ function FlowCard({ steps, final = false }: { steps: string[]; final?: boolean }
 function DesignBlock({ children }: { children: React.ReactNode }) {
   return (
     <div className={`${textWidth} flex flex-col items-center gap-[16px]`}>
-      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-white">The Design</p>
+      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Design</p>
       {children}
     </div>
   );
@@ -227,8 +227,8 @@ function DesignBlock({ children }: { children: React.ReactNode }) {
 
 function LearningCard() {
   return (
-    <div className={`${textWidth} rounded-[8px] bg-gradient-to-b from-[rgba(22,22,22,0.5)] to-[rgba(22,22,22,0.6)] p-[16px]`}>
-      <div className="flex w-full flex-col items-center gap-[16px] text-white">
+    <div className={`${textWidth} rounded-[8px] border border-site-border bg-site-card p-[16px]`}>
+      <div className="flex w-full flex-col items-center gap-[16px] text-site-primary">
         <p className="w-full text-[16px] font-bold leading-[1.618]">So, What we learned?</p>
         <div className="w-full whitespace-pre-wrap text-[14px] leading-[1.618] opacity-80">
           <p className="mb-0">The GPT experience helped us learn something important because AI could help fix the document conversion problem, but sending teachers outside Quipper created another problem. Teachers still had to read the guide then use the GPT then download the converted file then go back to Quipper and upload the right file. This made the real problem clearer because we did not only need AI to convert the document.</p>
@@ -246,7 +246,7 @@ function Footer() {
   return (
     <div className="flex w-full shrink-0 flex-col items-start rounded-bl-[8px] rounded-br-[8px] py-[16px]">
       <div className="flex w-full items-center justify-center">
-        <p className="shrink-0 whitespace-nowrap text-[10px] leading-[1.618] text-[#9c9c9c]">© 2025 Rosyd Aqbar</p>
+        <p className="shrink-0 whitespace-nowrap text-[10px] leading-[1.618] text-site-secondary">© 2025 Rosyd Aqbar</p>
       </div>
     </div>
   );
@@ -372,11 +372,11 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
   ];
 
   return (
-    <div className="flex min-h-[100dvh] w-full flex-col items-start gap-[10px] bg-[#1b1b1b]">
+    <div className="flex min-h-[100dvh] w-full flex-col items-start gap-[10px] bg-site-bg">
       <PageHeader showTitle={showHeaderTitle} />
       <main className="w-full rounded-bl-[8px] rounded-br-[8px]">
         <div className="flex w-full flex-col items-center px-[clamp(16px,6vw,234px)] py-[16px]">
-          <article className="flex w-full max-w-[780px] shrink-0 flex-col items-center gap-[48px] bg-[#1b1b1b] py-[8px]">
+          <article className="flex w-full max-w-[780px] shrink-0 flex-col items-center gap-[48px] bg-site-bg py-[8px]">
             {blocks.map((block, index) => (
               <AnimatedBlock key={index} index={index}>
                 {block}

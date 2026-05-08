@@ -65,7 +65,7 @@ export const galleryItems = [
       <>
         Cheating detection monitor platform, Students periodic reports, Content search, Syllabus, and{" "}
         <span className="inline-flex items-center gap-1 align-baseline">
-          <Sparkles size={12} className="text-white" />
+          <Sparkles size={12} className="text-site-primary" />
           AI import questions
         </span>
       </>

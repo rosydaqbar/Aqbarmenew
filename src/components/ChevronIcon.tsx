@@ -12,7 +12,7 @@ export function ChevronIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
       {keys.map((k) => (
-        <path key={k} d={(svgPaths as Record<string, string>)[k]} fill="white" />
+        <path key={k} d={(svgPaths as Record<string, string>)[k]} fill="currentColor" />
       ))}
     </svg>
   );

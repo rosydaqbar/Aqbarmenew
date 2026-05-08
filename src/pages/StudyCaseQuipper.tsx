@@ -21,8 +21,8 @@ export default function StudyCaseQuipper() {
 
   return (
     <div
-      className="min-h-[100dvh] w-full bg-[#1b1b1b]"
-      style={{ fontFamily: "'Space Mono', ui-monospace, monospace" }}
+      className="min-h-[100dvh] w-full bg-site-bg"
+      style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
     >
       <QuipperStudyCase onImageClick={setLightbox} />
 
@@ -35,12 +35,12 @@ export default function StudyCaseQuipper() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setLightbox(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6 backdrop-blur"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6"
           >
             <button
               onClick={() => setLightbox(null)}
               aria-label="Close"
-              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white bg-black text-white transition hover:bg-neutral-900"
             >
               <X size={18} />
             </button>
@@ -51,7 +51,7 @@ export default function StudyCaseQuipper() {
               animate={{ scale: 1 }}
               exit={{ scale: 0.94 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="max-h-[92vh] max-w-[92vw] rounded-lg object-contain shadow-2xl"
+              className="max-h-[92vh] max-w-[92vw] rounded-lg object-contain"
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>

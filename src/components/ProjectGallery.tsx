@@ -42,7 +42,7 @@ function GalleryCard({
         if (item.link) window.open(item.link, "_blank", "noopener,noreferrer");
       }}
       style={{ zIndex: galleryItems.length - index, cursor: item.link ? "pointer" : "default" }}
-      className="group relative flex w-full flex-col overflow-hidden rounded-[4px] bg-[#181818]"
+      className="group relative flex w-full flex-col overflow-hidden rounded-[4px] bg-site-surface-muted"
     >
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: "722 / 368.5" }}>
         <HoverImageCarousel images={item.images} hovered={hovered} />
@@ -50,7 +50,7 @@ function GalleryCard({
       <div className="flex flex-col p-4">
         <div className="flex items-center justify-between gap-3">
           <p
-            className="text-[#e2e2e2]"
+            className="text-site-primary"
             style={{ fontSize: "16px", lineHeight: 1.618, fontWeight: 700 }}
           >
             {item.title}
@@ -60,7 +60,7 @@ function GalleryCard({
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#9c9c9c] transition hover:text-white"
+              className="text-site-secondary transition hover:text-site-primary"
               aria-label={`Open ${item.title}`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -69,7 +69,7 @@ function GalleryCard({
           )}
         </div>
         <p
-          className="text-[#9c9c9c]"
+          className="text-site-secondary"
           style={{ fontSize: "12px", lineHeight: 1.618 }}
         >
           {item.description}
@@ -87,7 +87,7 @@ export function ProjectGallery({
   onToggle: () => void;
 }) {
   return (
-    <div className="relative flex min-h-[400px] w-full flex-col gap-4 bg-[#1b1b1b] py-4 lg:h-full lg:pl-6">
+    <div className="relative flex min-h-[400px] w-full flex-col gap-4 bg-site-bg py-4 lg:h-full lg:pl-6">
       <AnimatePresence mode="wait">
         {open ? (
           <motion.div
@@ -96,15 +96,15 @@ export function ProjectGallery({
             exit={{ opacity: 0, scale: 0.82, filter: "blur(8px)" }}
             transition={{ duration: 0.28 }}
           >
-            <div className="sticky top-0 z-20 flex h-[51px] w-full items-center justify-between bg-[#1b1b1b] py-2">
+            <div className="sticky top-0 z-20 flex h-[51px] w-full items-center justify-between bg-site-bg py-2">
               <div className="flex items-center gap-4">
-                <p className="text-[#e2e2e2]" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+                <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
                   Gallery
                 </p>
                 <button
                   onClick={onToggle}
                   aria-expanded={open}
-                  className="rounded-lg bg-gradient-to-b from-[rgba(36,36,36,0.5)] to-[rgba(28,22,22,0.25)] px-3 py-1 text-white shadow-[0px_1px_0px_rgba(0,0,0,0.05),0px_4px_2px_rgba(0,0,0,0.05),0px_10px_5px_rgba(0,0,0,0.1)] backdrop-blur transition hover:brightness-125"
+                  className="rounded-lg border border-site-border bg-site-button px-3 py-1 text-site-primary transition hover:bg-site-button-hover"
                   style={{ fontSize: "14px", lineHeight: "20px" }}
                 >
                   Hide
@@ -125,13 +125,13 @@ export function ProjectGallery({
             className="flex flex-1 flex-col items-center justify-center gap-4"
           >
             <div className="flex items-center gap-4">
-              <p className="text-[#e2e2e2]" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+              <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
                 Gallery
               </p>
               <button
                 onClick={onToggle}
                 aria-expanded={open}
-                className="rounded-lg bg-gradient-to-b from-[rgba(36,36,36,0.5)] to-[rgba(28,22,22,0.25)] px-3 py-1 text-white shadow-[0px_1px_0px_rgba(0,0,0,0.05),0px_4px_2px_rgba(0,0,0,0.05),0px_10px_5px_rgba(0,0,0,0.1)] backdrop-blur transition hover:brightness-125"
+                className="rounded-lg border border-site-border bg-site-button px-3 py-1 text-site-primary transition hover:bg-site-button-hover"
                 style={{ fontSize: "14px", lineHeight: "20px" }}
               >
                 Open
