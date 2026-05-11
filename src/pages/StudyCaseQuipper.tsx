@@ -3,6 +3,10 @@ import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { QuipperStudyCase } from "../components/QuipperStudyCase";
 
+function isVideoSrc(src: string) {
+  return /\.(mp4|webm|ogg)$/i.test(src);
+}
+
 export default function StudyCaseQuipper() {
   const [lightbox, setLightbox] = useState<string | null>(null);
 
@@ -26,7 +30,7 @@ export default function StudyCaseQuipper() {
     >
       <QuipperStudyCase onImageClick={setLightbox} />
 
-      <AnimatePresence>
+<AnimatePresence>
         {lightbox && (
           <motion.div
             key="lightbox"
@@ -44,16 +48,30 @@ export default function StudyCaseQuipper() {
             >
               <X size={18} />
             </button>
-            <motion.img
-              src={lightbox}
-              alt=""
+            <motion.div
               initial={{ scale: 0.94 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.94 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="max-h-[92vh] max-w-[92vw] rounded-lg object-contain"
+              className="max-h-[92vh] max-w-[92vw]"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              {isVideoSrc(lightbox) ? (
+                <video
+                  src={lightbox}
+                  autoPlay
+                  loop
+                  controls
+                  className="max-h-[92vh] max-w-[92vw] rounded-lg object-contain"
+                />
+              ) : (
+                <img
+                  src={lightbox}
+                  alt=""
+                  className="max-h-[92vh] max-w-[92vw] rounded-lg object-contain"
+                />
+              )}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

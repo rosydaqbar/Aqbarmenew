@@ -9,6 +9,7 @@ import gptSolutionImage from "../assets/study-case-quipper/gpt-solution.png";
 import gptDesignImage from "../assets/study-case-quipper/gpt-design.png";
 import gptResultImage from "../assets/study-case-quipper/gpt-result.png";
 import finalDesignImage from "../assets/study-case-quipper/final-design.png";
+import quipperVideo from "../assets/study-case-quipper/Quipper.mp4";
 
 type QuipperStudyCaseProps = {
   onImageClick: (src: string) => void;
@@ -94,6 +95,51 @@ function IntroTitle({ titleRef }: { titleRef: React.RefObject<HTMLDivElement> })
         {studyCaseTitle}
       </p>
       <p className="w-full max-w-[562px] text-[14px] text-site-muted">7~10 mins to read</p>
+    </div>
+  );
+}
+
+function HeroVideo({ onVideoClick }: { onVideoClick: (src: string) => void }) {
+  return (
+    <div className={textWidth}>
+      <button
+        type="button"
+        className="block w-full cursor-zoom-in border-0 bg-transparent p-0"
+        onClick={() => onVideoClick(quipperVideo)}
+        aria-label="Open video preview"
+      >
+        <video
+          src={quipperVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="block h-auto w-full rounded-[8px]"
+        />
+      </button>
+    </div>
+  );
+}
+
+function VideoBlock({ caption, onImageClick }: { caption: string; onImageClick: (src: string) => void }) {
+  return (
+    <div className={textWidth}>
+      <button
+        type="button"
+        className="block w-full cursor-zoom-in border-0 bg-transparent p-0"
+        onClick={() => onImageClick(quipperVideo)}
+        aria-label={`Open video: ${caption}`}
+      >
+        <video
+          src={quipperVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="block h-auto w-full rounded-[8px]"
+        />
+        <p className="mt-[8px] text-center text-[12px] leading-[1.618] text-site-secondary">{caption}</p>
+      </button>
     </div>
   );
 }
@@ -282,6 +328,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
 
   const blocks = [
     <IntroTitle titleRef={titleRef} />,
+    <HeroVideo onVideoClick={onImageClick} />,
     <OverviewSection />,
     <ImpactCard />,
     <div className="flex w-full flex-col items-center gap-[32px]">
@@ -363,6 +410,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
         </p>
         <p className="mt-[16px]">This showed that teachers were much more likely to finish the import process when AI conversion happened directly inside Quipper.</p>
       </TextSection>
+      <VideoBlock caption="New Design Flow" onImageClick={onImageClick} />
       <TextSection title="Reflection">
         <p className="mb-[16px]">This project showed that a solution can be useful but still hard to finish if teachers have to switch between too many places.</p>
         <p>The main lesson was that AI works better when users do not have to manage it on their own.</p>
