@@ -28,14 +28,17 @@ export const experiences = [
     bullets: [
       {
         text: "Improved the question import experience by redesigning the flow from a template-based upload into an AI-assisted document upload, increasing completion rate from 28.45% to 79.52%.",
-        cta: { label: "Read Study Case", href: "/study/quipper-import" },
+        cta: { label: "Read Case Study", href: "/study/quipper-import" },
+      },
+      {
+        text: "Designed a student cheating-activity detection and bulk follow-up workflow for teachers, based on research and usability testing, reducing task completion time by over 85% and making the task 6.7× faster to complete.",
+        cta: { label: "Read Case Study", disabled: true, tooltip: "Coming soon" },
       },
       "Revamped the entire design system by modernizing outdated design standards, improving overall quality, and increasing design delivery speed by 40%.",
       "Conducted to Product-Market Fit research to identify key user problems and help prioritize product roadmap decisions.",
       "Revamped the user interface of the QLink Learning Management System (LMS) for users in Indonesia and the Philippines, contributing to increased in overall teacher participation.",
       "Designed new Periodic Report a feature to compare related diagnostic report which led to a 50% success rate according to Usability Test.",
       "Improved assignment creation and delivery for teachers by reducing the flow from 19 steps to 9 steps, achieving a 52.6% reduction in required steps.",
-      "Designed a student cheating-activity detection and bulk follow-up workflow for teachers, based on research and usability testing, reducing task completion time by over 85% and making the task 6.7× faster to complete.",
     ],
   },
   {
@@ -44,9 +47,9 @@ export const experiences = [
     location: "Jakarta, Indonesia",
     period: "2018 - 2021",
     bullets: [
-      "Led design system for AXISNet reducing overall design delivery and efficiency.",
-      "Revamped the AXISNet membership feature (ALifetime), which led to a 40% increase in visits and a 70% increase in bonus items claimed.",
-      "Designed Paket Suka-Suka for AXISNet, a customizable internet package feature that achieved 84% user satisfaction based on survey results.",
+      "Leading project, increase productivity by providing the latest best practice and tools, and maintaining consistency. Handle various client such as : McDonalds, AXISNet, Union+, Tokiomarine, CIMB Niaga",
+      "Revamped AXISNet's membership feature, ALifetime, reducing the steps required for users to claim rewards.",
+      "Designed Paket Suka-Suka for AXISNet, a customizable internet package feature that gave users more flexibility when buying internet packages.",
     ],
   },
   {
