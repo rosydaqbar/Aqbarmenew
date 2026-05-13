@@ -57,28 +57,45 @@ function ExperienceRow({ exp }: { exp: (typeof experiences)[number] }) {
               <div className="flex flex-1 flex-col items-start gap-2">
                 <p className="text-site-secondary" style={{ fontSize: "14px", lineHeight: 1.618 }}>
                   {text}
+                  {cta && "disabled" in cta && cta.disabled && (
+                    <span className="group relative ml-2 inline-flex align-baseline">
+                      <button
+                        type="button"
+                        disabled
+                        className="inline-flex cursor-not-allowed items-center border-b border-dashed border-site-border text-site-muted align-baseline"
+                        style={{ fontSize: "14px", lineHeight: "20px" }}
+                      >
+                        {cta.label}
+                      </button>
+                      <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-site-border bg-site-button px-2 py-1 text-site-primary opacity-0 transition group-hover:opacity-100" style={{ fontSize: "12px", lineHeight: "16px" }}>
+                        {cta.tooltip}
+                      </span>
+                    </span>
+                  )}
+                  {cta && "href" in cta && cta.href && (
+                    <span className="ml-2 inline-flex align-baseline">
+                      {cta.href.startsWith("/") ? (
+                        <Link
+                          to={cta.href}
+                          className="inline-flex items-center border-b border-site-border text-site-primary transition hover:border-site-primary"
+                          style={{ fontSize: "14px", lineHeight: "20px" }}
+                        >
+                          {cta.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={cta.href || "#"}
+                          target={cta.href ? "_blank" : undefined}
+                          rel={cta.href ? "noopener noreferrer" : undefined}
+                          className="inline-flex items-center border-b border-site-border text-site-primary transition hover:border-site-primary"
+                          style={{ fontSize: "14px", lineHeight: "20px" }}
+                        >
+                          {cta.label}
+                        </a>
+                      )}
+                    </span>
+                  )}
                 </p>
-                {cta && "href" in cta && cta.href && (
-                  cta.href.startsWith("/") ? (
-                    <Link
-                      to={cta.href}
-                      className="inline-flex items-center rounded-lg border border-site-border bg-transparent px-3 py-1 text-site-primary transition hover:border-site-secondary"
-                      style={{ fontSize: "14px", lineHeight: "20px" }}
-                    >
-                      {cta.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={cta.href || "#"}
-                      target={cta.href ? "_blank" : undefined}
-                      rel={cta.href ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center rounded-lg border border-site-border bg-transparent px-3 py-1 text-site-primary transition hover:border-site-secondary"
-                      style={{ fontSize: "14px", lineHeight: "20px" }}
-                    >
-                      {cta.label}
-                    </a>
-                  )
-                )}
               </div>
             </div>
           );
