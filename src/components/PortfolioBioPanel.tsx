@@ -58,7 +58,7 @@ function ExperienceRow({ exp }: { exp: (typeof experiences)[number] }) {
                 <p className="text-site-secondary" style={{ fontSize: "14px", lineHeight: 1.618 }}>
                   {text}
                 </p>
-                {cta && (
+                {cta && "href" in cta && cta.href && (
                   cta.href.startsWith("/") ? (
                     <Link
                       to={cta.href}
