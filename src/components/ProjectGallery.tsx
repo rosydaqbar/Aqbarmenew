@@ -99,7 +99,7 @@ export function ProjectGallery({
             <div className="sticky top-0 z-20 flex h-[51px] w-full items-center justify-between bg-site-bg py-2">
               <div className="flex items-center gap-4">
                 <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
-                  Gallery
+                  My Recent Work
                 </p>
                 <button
                   onClick={onToggle}
@@ -126,7 +126,7 @@ export function ProjectGallery({
           >
             <div className="flex items-center gap-4">
               <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
-                Gallery
+                My Recent Work
               </p>
               <button
                 onClick={onToggle}

@@ -119,7 +119,7 @@ export default function Home() {
     return (
       <div
         className="min-h-[100dvh] w-full bg-site-bg px-4"
-        style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
+        style={{ fontFamily: "var(--site-font-family)" }}
       >
         <div className="mx-auto flex max-w-[620px] flex-col">
           <PortfolioPrimaryContent />
@@ -133,7 +133,7 @@ export default function Home() {
   return (
     <div
       className="h-[100dvh] w-full overflow-hidden bg-site-bg px-4"
-      style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
+      style={{ fontFamily: "var(--site-font-family)" }}
     >
       <div className="flex h-full items-start gap-[10px]">
         <div ref={leftRef} className="h-full overflow-hidden">

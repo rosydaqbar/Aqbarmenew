@@ -26,7 +26,7 @@ export default function StudyCaseQuipper() {
   return (
     <div
       className="min-h-[100dvh] w-full bg-site-bg"
-      style={{ fontFamily: "'Geist Mono', ui-monospace, monospace" }}
+      style={{ fontFamily: "var(--site-font-family)" }}
     >
       <QuipperStudyCase onImageClick={setLightbox} />
 
