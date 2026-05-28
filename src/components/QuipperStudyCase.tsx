@@ -101,7 +101,7 @@ function IntroTitle({ titleRef }: { titleRef: React.RefObject<HTMLDivElement> })
 
 function HeroVideo({ onVideoClick }: { onVideoClick: (src: string) => void }) {
   return (
-    <div className={textWidth}>
+    <div className="w-full max-w-[960px]">
       <button
         type="button"
         className="block w-full cursor-zoom-in border-0 bg-transparent p-0"
@@ -157,19 +157,50 @@ function BulletText({ children }: { children: React.ReactNode }) {
 
 function OverviewSection() {
   return (
-    <div className="flex w-full flex-col items-center gap-[16px]">
-      <p className={sectionTitle}>Overview</p>
-      <p className={bodyText}>Quipper Link helps teachers import questions into the platform.</p>
-      <BulletText>
-        <p className="leading-[1.618]">Previously, teachers had to use Quipper’s fixed template. They needed to download the template, copy their questions into it, and upload the file back to Quipper. It worked, but it still required too much manual work.</p>
-      </BulletText>
-      <BulletText>
-        <p className="leading-[1.618]">We then tested an AI-assisted flow using GPTs. This helped teachers convert their question documents faster, but the process was still not smooth. Teachers had to leave Quipper, open ChatGPT in a new tab, download the converted file, then return to Quipper to upload it.</p>
-      </BulletText>
-      <BulletText>
-        <p className="mb-0 leading-[1.618]">Instead of forcing teachers to use Quipper’s template, we allowed them to upload the question documents they already had.</p>
-        <p className="leading-[1.618]">We then used AI to automatically convert those documents inside the platform.</p>
-      </BulletText>
+    <div className="grid w-full max-w-[960px] gap-[40px] lg:grid-cols-[minmax(0,562px)_minmax(240px,300px)] lg:items-start lg:justify-center lg:gap-[56px]">
+      <div className="flex w-full flex-col items-center gap-[16px] lg:items-start">
+        <p className={sectionTitle}>Overview</p>
+        <p className={bodyText}>Quipper Link helps teachers import questions into the platform.</p>
+        <BulletText>
+          <p className="leading-[1.618]">Previously, teachers had to use Quipper’s fixed template. They needed to download the template, copy their questions into it, and upload the file back to Quipper. It worked, but it still required too much manual work.</p>
+        </BulletText>
+        <BulletText>
+          <p className="leading-[1.618]">We then tested an AI-assisted flow using GPTs. This helped teachers convert their question documents faster, but the process was still not smooth. Teachers had to leave Quipper, open ChatGPT in a new tab, download the converted file, then return to Quipper to upload it.</p>
+        </BulletText>
+        <BulletText>
+          <p className="mb-0 leading-[1.618]">Instead of forcing teachers to use Quipper’s template, we allowed them to upload the question documents they already had.</p>
+          <p className="leading-[1.618]">We then used AI to automatically convert those documents inside the platform.</p>
+        </BulletText>
+        <div className="mt-[12px] w-full max-w-[562px] rounded-[8px] border border-site-border bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,0.08),transparent_32%),var(--site-card)] px-[32px] py-[28px] shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
+          <div className="flex flex-col gap-[28px]">
+            <div className="flex flex-col gap-[8px]">
+              <p className="font-title text-[28px] font-bold leading-[1.2] text-site-primary">179.5%</p>
+              <p className="text-[14px] leading-[1.618] text-site-secondary">Completion rate improvement</p>
+            </div>
+            <div className="flex flex-col gap-[8px]">
+              <p className="font-title text-[28px] font-bold leading-[1.2] text-site-primary">40+</p>
+              <p className="text-[14px] leading-[1.618] text-site-secondary">Mins time saved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside className="flex w-full max-w-[562px] flex-col gap-[28px] justify-self-center lg:max-w-none lg:justify-self-start">
+        <div className="flex flex-col gap-[12px]">
+          <p className="font-title text-[16px] font-bold leading-[1.618] text-site-primary">Role</p>
+          <div className="flex flex-col gap-[8px] text-[14px] leading-[1.618]">
+            <p className="text-site-primary">Product Designer (Solo Designer)</p>
+            <p className="text-site-secondary">End-to-end design process from discovery, design decision, and validation.</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-[12px]">
+          <p className="font-title text-[16px] font-bold leading-[1.618] text-site-primary">Timeline</p>
+          <p className="text-[14px] leading-[1.618] text-site-primary">Jan 2025 - Sept 2025</p>
+        </div>
+        <div className="flex flex-col gap-[12px]">
+          <p className="font-title text-[16px] font-bold leading-[1.618] text-site-primary">Industry</p>
+          <p className="text-[14px] leading-[1.618] text-site-primary">Education Technology</p>
+        </div>
+      </aside>
     </div>
   );
 }
@@ -326,7 +357,6 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
     <IntroTitle titleRef={titleRef} />,
     <HeroVideo onVideoClick={onImageClick} />,
     <OverviewSection />,
-    <ImpactCard />,
     <div className="flex w-full flex-col items-center gap-[32px]">
       <TextSection title="Problem">
         <p className="mb-0">Different schools use different document formats for their questions.</p>
@@ -420,7 +450,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
       <PageHeader showTitle={showHeaderTitle} />
       <main className="w-full rounded-bl-[8px] rounded-br-[8px]">
         <div className="flex w-full flex-col items-center px-[clamp(16px,6vw,234px)] py-[16px]">
-          <article className="flex w-full max-w-[780px] shrink-0 flex-col items-center gap-[48px] bg-site-bg py-[8px]">
+          <article className="flex w-full max-w-[960px] shrink-0 flex-col items-center gap-[48px] bg-site-bg py-[8px]">
             {blocks.map((block, index) => (
               <AnimatedBlock key={index} index={index}>
                 {block}
