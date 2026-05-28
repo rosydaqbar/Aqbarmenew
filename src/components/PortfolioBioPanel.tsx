@@ -159,7 +159,7 @@ export function PortfolioPrimaryContent() {
           </AnimatedReveal>
           <AnimatedReveal delay={t()}>
             <a
-              href="https://drive.google.com/file/d/1UTvICWQVGvo4jfUzWk4TnQC5R8A_iJF2/view?usp=sharing"
+              href="https://drive.google.com/file/d/17zQjmfsxUshmVOrjmBAG0u-saG4XOkH0/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex self-start rounded-lg border border-site-border bg-transparent px-3 py-1 text-site-primary transition hover:border-site-secondary"

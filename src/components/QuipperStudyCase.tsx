@@ -159,20 +159,16 @@ function OverviewSection() {
   return (
     <div className="flex w-full flex-col items-center gap-[16px]">
       <p className={sectionTitle}>Overview</p>
-      <p className={bodyText}>Quipper Link has a feature that helps teachers import questions into the platform.</p>
+      <p className={bodyText}>Quipper Link helps teachers import questions into the platform.</p>
       <BulletText>
-        <p className="mb-0 leading-[1.618]">Before, teachers had to use a fixed template from Quipper. They needed to download the template, copy their questions into it, and upload the file back to Quipper.</p>
-        <p className="leading-[1.618]">The feature worked, but it still made teachers do a lot of manual work.</p>
+        <p className="leading-[1.618]">Previously, teachers had to use Quipper’s fixed template. They needed to download the template, copy their questions into it, and upload the file back to Quipper. It worked, but it still required too much manual work.</p>
       </BulletText>
       <BulletText>
-        <p className="leading-[1.618]">After that, we tried an AI-assisted flow using GPTs. This helped teachers convert their question documents faster, but the flow was still not smooth enough. Teachers had to leave Quipper, open ChatGPT in a new tab, download the converted file, then go back to Quipper to upload it.</p>
+        <p className="leading-[1.618]">We then tested an AI-assisted flow using GPTs. This helped teachers convert their question documents faster, but the process was still not smooth. Teachers had to leave Quipper, open ChatGPT in a new tab, download the converted file, then return to Quipper to upload it.</p>
       </BulletText>
       <BulletText>
-        <p className="mb-0 leading-[1.618]">The biggest improvement happened when we changed the flow. Instead of asking teachers to use Quipper’s template, we let them upload the question documents they already had.</p>
-        <p className="mb-0 leading-[1.618]">&nbsp;</p>
-        <p className="mb-0 leading-[1.618]">Quipper integrate AI automatically converting teacher’s document inside Quipper directly.</p>
-        <p className="mb-0 leading-[1.618]">&nbsp;</p>
-        <p className="leading-[1.618]">This changed the experience completely.</p>
+        <p className="mb-0 leading-[1.618]">Instead of forcing teachers to use Quipper’s template, we allowed them to upload the question documents they already had.</p>
+        <p className="leading-[1.618]">We then used AI to automatically convert those documents inside the platform.</p>
       </BulletText>
     </div>
   );
