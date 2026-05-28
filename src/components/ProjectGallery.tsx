@@ -50,7 +50,7 @@ function GalleryCard({
       <div className="flex flex-col p-4">
         <div className="flex items-center justify-between gap-3">
           <p
-            className="text-site-primary"
+            className="font-title text-site-primary"
             style={{ fontSize: "16px", lineHeight: 1.618, fontWeight: 700 }}
           >
             {item.title}
@@ -98,7 +98,7 @@ export function ProjectGallery({
           >
             <div className="sticky top-0 z-20 flex h-[51px] w-full items-center justify-between bg-site-bg py-2">
               <div className="flex items-center gap-4">
-                <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+                <p className="font-title text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
                   My Recent Work
                 </p>
                 <button
@@ -125,7 +125,7 @@ export function ProjectGallery({
             className="flex flex-1 flex-col items-center justify-center gap-4"
           >
             <div className="flex items-center gap-4">
-              <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+              <p className="font-title text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
                 My Recent Work
               </p>
               <button

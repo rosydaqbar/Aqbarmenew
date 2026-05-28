@@ -28,7 +28,7 @@ function ExperienceRow({ exp }: { exp: (typeof experiences)[number] }) {
     <div className="flex w-full flex-col gap-3 py-2">
       <div className="flex w-full items-center gap-6">
         <div className="flex min-w-[120px] flex-col gap-1">
-          <span className="text-site-primary" style={{ fontSize: "16px", lineHeight: 1.618, fontWeight: 700 }}>
+          <span className="font-title text-site-primary" style={{ fontSize: "16px", lineHeight: 1.618, fontWeight: 700 }}>
             {exp.company}
           </span>
           <div className="flex flex-wrap items-center gap-2 text-site-secondary">
@@ -117,7 +117,7 @@ export function PortfolioPrimaryContent() {
                 <div className="absolute left-1 top-[3px] h-[18px] w-[7px] rounded-[2px] bg-site-brand-mark" />
                 <div className="absolute left-[13px] top-[3px] h-[7px] w-[7px] rounded-[2px] bg-site-brand-mark" />
               </div>
-              <span className="text-site-primary" style={{ fontSize: "20px", letterSpacing: "-0.9px", fontWeight: 700 }}>
+              <span className="font-title text-site-primary" style={{ fontSize: "20px", letterSpacing: "-0.9px", fontWeight: 700 }}>
                 Aqbar
               </span>
             </div>
@@ -143,7 +143,7 @@ export function PortfolioPrimaryContent() {
 
         <div className="flex w-full max-w-[580px] flex-col gap-4 py-2">
           <AnimatedReveal delay={t()}>
-            <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+            <p className="font-title text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
               Raden Rosyd Aqbar Setiyanto.
             </p>
           </AnimatedReveal>
@@ -185,7 +185,7 @@ export function PortfolioPrimaryContent() {
       <div className="flex flex-col gap-6 pt-4 pb-10">
         <div className="flex flex-col gap-3 py-2">
           <AnimatedReveal delay={t()}>
-            <p className="text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
+            <p className="font-title text-site-primary" style={{ fontSize: "18px", lineHeight: 1.618, fontWeight: 700 }}>
               Experience.
             </p>
           </AnimatedReveal>
@@ -227,7 +227,7 @@ export function PortfolioSecondaryContent() {
       <div className="py-2 pt-8">
         <div className="rounded-lg border border-site-border bg-site-card px-8 py-6">
           <div className="flex flex-col gap-2">
-            <p className="text-site-primary" style={{ fontSize: "16px", lineHeight: 1.618 }}>
+            <p className="font-title text-site-primary" style={{ fontSize: "16px", lineHeight: 1.618 }}>
               Say Hello.
             </p>
             <p className="text-site-secondary" style={{ fontSize: "16px", lineHeight: 1.618 }}>

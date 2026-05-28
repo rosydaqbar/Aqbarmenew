@@ -17,8 +17,8 @@ type QuipperStudyCaseProps = {
 
 const textWidth = "w-full max-w-[562px]";
 const bodyText = `${textWidth} text-[14px] leading-[1.618] text-site-primary opacity-80`;
-const sectionTitle = `${textWidth} text-[16px] leading-[1.618] font-bold text-site-primary`;
-const majorTitle = `${textWidth} text-[20px] leading-[1.618] font-bold text-site-primary`;
+const sectionTitle = `${textWidth} font-title text-[16px] leading-[1.618] font-bold text-site-primary`;
+const majorTitle = `${textWidth} font-title text-[20px] leading-[1.618] font-bold text-site-primary`;
 const studyCaseTitle = "179% Increase in Question Import Completion Rate in Quipper";
 
 function AnimatedBlock({ children, index }: { children: React.ReactNode; index: number }) {
@@ -63,7 +63,7 @@ function PageHeader({ showTitle }: { showTitle: boolean }) {
                 <BackIcon />
                 <span className="text-[12px] leading-[20px]">Back</span>
               </Link>
-              <p className="shrink-0 whitespace-nowrap text-[16px] font-bold leading-[1.618] text-site-primary">
+              <p className="font-title shrink-0 whitespace-nowrap text-[16px] font-bold leading-[1.618] text-site-primary">
                 Portfolio
               </p>
             </div>
@@ -75,7 +75,7 @@ function PageHeader({ showTitle }: { showTitle: boolean }) {
                 initial={false}
                 animate={showTitle ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: -4, height: 0 }}
                 transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-[520px] overflow-hidden whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary"
+                className="font-title max-w-[520px] overflow-hidden whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary"
               >
                 {studyCaseTitle}
               </motion.p>
@@ -91,7 +91,7 @@ function PageHeader({ showTitle }: { showTitle: boolean }) {
 function IntroTitle({ titleRef }: { titleRef: React.RefObject<HTMLDivElement> }) {
   return (
     <div ref={titleRef} className="flex w-full flex-col items-center gap-[8px] text-center leading-[1.618]">
-      <p className="w-full max-w-[666px] text-[20px] font-bold text-site-primary sm:text-[24px]">
+      <p className="font-title w-full max-w-[666px] text-[20px] font-bold text-site-primary sm:text-[24px]">
         {studyCaseTitle}
       </p>
       <p className="w-full max-w-[562px] text-[14px] text-site-muted">7~10 mins to read</p>
@@ -249,7 +249,7 @@ function FlowCard({ steps, final = false }: { steps: string[]; final?: boolean }
   return (
     <div className={`${final ? "bg-site-final-card" : "bg-site-card"} relative flex flex-col items-center gap-[16px] p-[24px]`}>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 border border-site-border border-solid" />
-      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Flow</p>
+      <p className="font-title whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Flow</p>
       <div className="flex w-full max-w-[410px] flex-col items-center gap-[8px]">
         {steps.map((step, index) => (
           <div key={step} className="flex w-full flex-col items-center gap-[8px]">
@@ -265,7 +265,7 @@ function FlowCard({ steps, final = false }: { steps: string[]; final?: boolean }
 function DesignBlock({ children }: { children: React.ReactNode }) {
   return (
     <div className={`${textWidth} flex flex-col items-center gap-[16px]`}>
-      <p className="whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Design</p>
+      <p className="font-title whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Design</p>
       {children}
     </div>
   );
@@ -275,7 +275,7 @@ function LearningCard() {
   return (
     <div className={`${textWidth} rounded-[8px] border border-site-border bg-site-card p-[16px]`}>
       <div className="flex w-full flex-col items-center gap-[16px] text-site-primary">
-        <p className="w-full text-[16px] font-bold leading-[1.618]">So, What we learned?</p>
+        <p className="font-title w-full text-[16px] font-bold leading-[1.618]">So, What we learned?</p>
         <div className="w-full whitespace-pre-wrap text-[14px] leading-[1.618] opacity-80">
           <p className="mb-0">The GPT experience helped us learn something important because AI could help fix the document conversion problem, but sending teachers outside Quipper created another problem. Teachers still had to read the guide then use the GPT then download the converted file then go back to Quipper and upload the right file. This made the real problem clearer because we did not only need AI to convert the document.</p>
           <p>

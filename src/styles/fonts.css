@@ -1,4 +1,20 @@
 @font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "GeistPixelSquare";
   src: url("../assets/fonts/GeistPixel-Square.woff2") format("woff2");
   font-weight: 100 900;
@@ -7,5 +23,10 @@
 }
 
 :root {
-  --site-font-family: "GeistPixelSquare", ui-monospace, monospace;
+  --site-font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --site-title-font-family: "GeistPixelSquare", ui-monospace, monospace;
+}
+
+.font-title {
+  font-family: var(--site-title-font-family);
 }
