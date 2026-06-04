@@ -20,6 +20,16 @@ const bodyText = `${textWidth} text-[14px] leading-[1.618] text-site-primary opa
 const sectionTitle = `${textWidth} font-title text-[16px] leading-[1.618] font-bold text-site-primary`;
 const majorTitle = `${textWidth} font-title text-[20px] leading-[1.618] font-bold text-site-primary`;
 const studyCaseTitle = "179% Increase in Question Import Completion Rate in Quipper";
+const stepperSections = [
+  { id: "overview", label: "Overview" },
+  { id: "problem", label: "Problem" },
+  { id: "challenge", label: "Challenge" },
+  { id: "early-solution", label: "Early Solution" },
+  { id: "first-solution", label: "First Solution" },
+  { id: "final-solution", label: "Final Solution" },
+  { id: "final-result", label: "Final Result" },
+  { id: "reflection", label: "Reflection" },
+] as const;
 
 function AnimatedBlock({ children, index }: { children: React.ReactNode; index: number }) {
   return (
@@ -85,6 +95,40 @@ function PageHeader({ showTitle }: { showTitle: boolean }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function StudyCaseStepper({ activeSection }: { activeSection: string }) {
+  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    event.preventDefault();
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", `#${sectionId}`);
+  };
+
+  return (
+    <nav aria-label="Study case sections" className="fixed left-[clamp(16px,4vw,34px)] top-[112px] z-20 hidden xl:block">
+      <ol className="relative flex flex-col gap-[18px] pl-[22px]">
+        <span aria-hidden="true" className="absolute left-[3px] top-[7px] h-[calc(100%-14px)] w-px bg-site-border" />
+        {stepperSections.map((section) => {
+          const active = activeSection === section.id;
+          return (
+            <li key={section.id} className="relative">
+              <span
+                aria-hidden="true"
+                className={`absolute -left-[22px] top-[7px] h-[7px] w-[7px] rounded-full transition ${active ? "bg-site-primary" : "bg-site-border"}`}
+              />
+              <a
+                href={`#${section.id}`}
+                onClick={(event) => scrollToSection(event, section.id)}
+                className={`font-title block text-[12px] leading-[1.618] transition hover:text-site-primary ${active ? "text-site-primary" : "text-site-secondary"}`}
+              >
+                {section.label}
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 
@@ -328,6 +372,7 @@ function Footer() {
 export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
   const titleRef = useRef<HTMLDivElement>(null);
   const [showHeaderTitle, setShowHeaderTitle] = useState(false);
+  const [activeSection, setActiveSection] = useState(stepperSections[0].id);
 
   useEffect(() => {
     let frame = 0;
@@ -353,21 +398,47 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
     };
   }, []);
 
+  useEffect(() => {
+    const sections = stepperSections
+      .map((section) => document.getElementById(section.id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.2, 0.5, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const blocks = [
     <IntroTitle titleRef={titleRef} />,
     <HeroVideo onVideoClick={onImageClick} />,
-    <OverviewSection />,
-    <div className="flex w-full flex-col items-center gap-[32px]">
+    <div id="overview" className="scroll-mt-[112px]">
+      <OverviewSection />
+    </div>,
+    <div id="problem" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <TextSection title="Problem">
         <p className="mb-0">Different schools use different document formats for their questions.</p>
         <p>This creates a problem for the system because Quipper needs clean and structured data to import questions correctly.</p>
       </TextSection>
       <CaseImage src={problemImage} rounded onClick={onImageClick} />
-      <TextSection title="Challenge">
+      <div id="challenge" className="w-full scroll-mt-[112px]">
+        <TextSection title="Challenge">
         <p>How might we standardize different school question document formats so Quipper can import them correctly?</p>
-      </TextSection>
+        </TextSection>
+      </div>
     </div>,
-    <div className="flex w-full flex-col items-center gap-[32px]">
+    <div id="early-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <TextSection title="Early Solution" major>
         <p>The first version focused on standardization because schools used different document formats, so Quipper needed one format that the system could understand. The template helped solve this by giving teachers a fixed structure to follow. They could fill in the required question, such as the question text, answer options, correct answer, and other details. Once the file matched Quipper’s structure, the system could import the questions.</p>
       </TextSection>
@@ -386,7 +457,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
         <p>How might we reduce the manual work teachers need to do when converting their existing question documents into Quipper’s template?</p>
       </TextSection>
     </div>,
-    <div className="flex w-full flex-col items-center gap-[32px]">
+    <div id="first-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <div className="flex w-full flex-col items-center gap-[16px]">
         <TextSection title="First Solution" major>
           <p>When AI became more common, we saw a chance to reduce the manual formatting work. Instead of asking teachers to move their questions into Quipper’s template by themselves, we tried using AI to help convert their documents. The Operations team built GPTs that could change school question documents into Quipper’s required template. </p>
@@ -417,7 +488,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
         <p>How might we bring AI conversion directly into Quipper so teachers can upload their question document and complete the import process in one place?</p>
       </TextSection>
     </div>,
-    <div className="flex w-full flex-col items-center gap-[32px]">
+    <div id="final-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <TextSection title="Final Solution" major>
         <p className="mb-0">AI integration baked directly into Import Question.</p>
         <p className="mb-0">&nbsp;</p>
@@ -429,18 +500,22 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
       <DesignBlock>
         <CaseImage src={finalDesignImage} onClick={onImageClick} />
       </DesignBlock>
-      <TextSection title="Final Result">
-        <p className="mb-0">
-          <span>After integrating AI directly into the import question flow, the completion rate increased to </span>
-          <span className="font-bold text-[#09991f]">79.52%.</span>
-        </p>
-        <p className="mt-[16px]">This showed that teachers were much more likely to finish the import process when AI conversion happened directly inside Quipper.</p>
-      </TextSection>
+      <div id="final-result" className="w-full scroll-mt-[112px]">
+        <TextSection title="Final Result">
+          <p className="mb-0">
+            <span>After integrating AI directly into the import question flow, the completion rate increased to </span>
+            <span className="font-bold text-[#09991f]">79.52%.</span>
+          </p>
+          <p className="mt-[16px]">This showed that teachers were much more likely to finish the import process when AI conversion happened directly inside Quipper.</p>
+        </TextSection>
+      </div>
       <VideoBlock caption="New Design Flow" onImageClick={onImageClick} />
-      <TextSection title="Reflection">
-        <p className="mb-[16px]">This project showed that a solution can be useful but still hard to finish if teachers have to switch between too many places.</p>
-        <p>The main lesson was that AI works better when users do not have to manage it on their own.</p>
-      </TextSection>
+      <div id="reflection" className="w-full scroll-mt-[112px]">
+        <TextSection title="Reflection">
+          <p className="mb-[16px]">This project showed that a solution can be useful but still hard to finish if teachers have to switch between too many places.</p>
+          <p>The main lesson was that AI works better when users do not have to manage it on their own.</p>
+        </TextSection>
+      </div>
     </div>,
     <p className={`${sectionTitle} text-center`}>Thank You!</p>,
   ];
@@ -448,6 +523,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
   return (
     <div className="flex min-h-[100dvh] w-full flex-col items-start gap-[10px] bg-site-bg">
       <PageHeader showTitle={showHeaderTitle} />
+      <StudyCaseStepper activeSection={activeSection} />
       <main className="w-full rounded-bl-[8px] rounded-br-[8px]">
         <div className="flex w-full flex-col items-center px-[clamp(16px,6vw,234px)] py-[16px]">
           <article className="flex w-full max-w-[960px] shrink-0 flex-col items-center gap-[48px] bg-site-bg py-[8px]">
