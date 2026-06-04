@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ChevronIcon } from "./ChevronIcon";
-import problemImage from "../assets/study-case-quipper/problem-document.png";
-import earlySolutionImage from "../assets/study-case-quipper/template-example.png";
-import templateDesignImage from "../assets/study-case-quipper/template-design.png";
+import problemFlowImage from "../assets/study-case-quipper/problem-flow.png";
+import learnIcon from "../assets/study-case-quipper/icon-learn.svg";
+import challengeIcon from "../assets/study-case-quipper/icon-challenge.svg";
 import gptSolutionImage from "../assets/study-case-quipper/gpt-solution.png";
 import gptDesignImage from "../assets/study-case-quipper/gpt-design.png";
 import gptResultImage from "../assets/study-case-quipper/gpt-result.png";
@@ -23,9 +23,7 @@ const studyCaseTitle = "179% Increase in Question Import Completion Rate in Quip
 const stepperSections = [
   { id: "overview", label: "Overview" },
   { id: "problem", label: "Problem" },
-  { id: "challenge", label: "Challenge" },
-  { id: "early-solution", label: "Early Solution" },
-  { id: "first-solution", label: "First Solution" },
+  { id: "first-solution", label: "Patching Up Repetitive Workflow" },
   { id: "final-solution", label: "Final Solution" },
   { id: "final-result", label: "Final Result" },
   { id: "reflection", label: "Reflection" },
@@ -295,6 +293,59 @@ function CaseImage({ src, rounded = false, onClick }: { src: string; rounded?: b
   );
 }
 
+function WideCaseImage({ src, rounded = false, onClick }: { src: string; rounded?: boolean; onClick: (src: string) => void }) {
+  return (
+    <button
+      type="button"
+      className="block w-full max-w-[826px] cursor-zoom-in border-0 bg-transparent p-0 text-left"
+      onClick={() => onClick(src)}
+      aria-label="Open image preview"
+    >
+      <img src={src} alt="" className={`block h-auto w-full ${rounded ? "rounded-[8px]" : ""}`} />
+    </button>
+  );
+}
+
+function ProblemProcessStep({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
+  return (
+    <div className={`${textWidth} flex items-start gap-[16px]`}>
+      <div className="flex size-[32px] shrink-0 items-center justify-center rounded-full bg-site-surface-strong text-[14px] leading-[1.618] text-site-primary opacity-80">
+        {number}
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-[4px] text-[14px] leading-[1.618] text-site-primary">
+        <p>{title}</p>
+        <div className="[&>p]:opacity-60">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function ProblemInsightCallout() {
+  return (
+    <div className="mt-[12px] flex w-full items-start gap-[16px] rounded-[8px] border border-black bg-[linear-gradient(to_bottom,var(--site-card),var(--site-surface-strong))] p-[16px] text-site-primary">
+      <div className="flex h-[24px] shrink-0 items-center overflow-hidden py-[4px]">
+        <span className="relative flex size-[16px] items-center justify-center">
+          <span className="absolute size-[12px] animate-ping rounded-full bg-[#ff2150]/30" />
+          <span className="relative size-[6px] rounded-full bg-[#ff2150]" />
+        </span>
+      </div>
+      <p className="min-w-0 flex-1 text-[14px] leading-[1.618] text-site-primary">
+        <span>Based on our internal observation, each question can take around </span>
+        <span className="font-bold">20 seconds to 3 minutes</span>
+        <span> to input, whether into our question import template or directly into our platform!</span>
+      </p>
+    </div>
+  );
+}
+
+function ProblemQuote({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={`${textWidth} border-l-2 border-[#3dad5a] px-[16px]`}>
+      <p className="text-[14px] italic leading-[1.618] text-site-primary opacity-80">{children}</p>
+    </div>
+  );
+}
+
 function FlowStep({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex w-full shrink-0 items-center justify-center rounded-[2px] bg-site-surface-strong px-[12px] py-[10px]">
@@ -316,15 +367,23 @@ function FlowArrow() {
   );
 }
 
-function FlowCard({ steps, final = false }: { steps: string[]; final?: boolean }) {
+type FlowCardStep = string | { label: string };
+
+function FlowCard({ steps, final = false }: { steps: FlowCardStep[]; final?: boolean }) {
   return (
     <div className={`${final ? "bg-site-final-card" : "bg-site-card"} relative flex flex-col items-center gap-[16px] p-[24px]`}>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 border border-site-border border-solid" />
       <p className="font-title whitespace-nowrap text-[14px] font-bold leading-[1.618] text-site-primary">The Flow</p>
       <div className="flex w-full max-w-[410px] flex-col items-center gap-[8px]">
         {steps.map((step, index) => (
-          <div key={step} className="flex w-full flex-col items-center gap-[8px]">
-            <FlowStep>{step}</FlowStep>
+          <div key={typeof step === "string" ? step : step.label} className="flex w-full flex-col items-center gap-[8px]">
+            {typeof step === "string" ? (
+              <FlowStep>{step}</FlowStep>
+            ) : (
+              <div className="relative flex w-auto shrink-0 items-center justify-center rounded-full bg-site-surface-strong px-[20px] py-[10px]">
+                <p className="whitespace-normal text-[14px] leading-[1.618] text-site-primary opacity-70">{step.label}</p>
+              </div>
+            )}
             {index < steps.length - 1 && <FlowArrow />}
           </div>
         ))}
@@ -346,7 +405,12 @@ function LearningCard() {
   return (
     <div className={`${textWidth} rounded-[8px] border border-site-border bg-site-card p-[16px]`}>
       <div className="flex w-full flex-col items-center gap-[16px] text-site-primary">
-        <p className="font-title w-full text-[16px] font-bold leading-[1.618]">So, What we learned?</p>
+        <div className="flex w-full items-center gap-[16px]">
+          <span className="flex size-[24px] shrink-0 items-center justify-center overflow-hidden bg-[#3dad5a]">
+            <img src={learnIcon} alt="" className="size-[18px]" aria-hidden="true" />
+          </span>
+          <p className="font-title text-[16px] font-bold leading-[1.618]">So, What we learned?</p>
+        </div>
         <div className="w-full whitespace-pre-wrap text-[14px] leading-[1.618] opacity-80">
           <p className="mb-0">The GPT experience helped us learn something important because AI could help fix the document conversion problem, but sending teachers outside Quipper created another problem. Teachers still had to read the guide then use the GPT then download the converted file then go back to Quipper and upload the right file. This made the real problem clearer because we did not only need AI to convert the document.</p>
           <p>
@@ -355,6 +419,18 @@ function LearningCard() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ChallengeBlock() {
+  return (
+    <div className="flex w-full flex-col items-center gap-[16px] text-site-primary">
+      <div className={`${textWidth} flex items-start gap-[16px]`}>
+        <img src={challengeIcon} alt="" className="size-[24px] shrink-0" aria-hidden="true" />
+        <p className="font-title text-[16px] font-bold leading-[1.618]">Challenge</p>
+      </div>
+      <p className={bodyText}>How might we reduce the manual work teachers need to do when converting their existing question documents into Quipper’s template?</p>
     </div>
   );
 }
@@ -431,35 +507,39 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
         <p className="mb-0">Different schools use different document formats for their questions.</p>
         <p>This creates a problem for the system because Quipper needs clean and structured data to import questions correctly.</p>
       </TextSection>
-      <CaseImage src={problemImage} rounded onClick={onImageClick} />
-      <div id="challenge" className="w-full scroll-mt-[112px]">
-        <TextSection title="Challenge">
-        <p>How might we standardize different school question document formats so Quipper can import them correctly?</p>
-        </TextSection>
+      <p className={bodyText}>But Quipper needed one format that the system could understand. The template helped solve this by giving teachers a fixed structure to follow.</p>
+      <WideCaseImage src={problemFlowImage} rounded onClick={onImageClick} />
+      <p className={`${bodyText} opacity-60`}>Teachers had to adjust their documents to fit Quipper’s format. For teachers who often created questions or already understood the template, this was still usable. However, for wider usage, it required too much manual work. The main issue was that teachers still had to handle the conversion themselves.</p>
+      <div className="flex w-full flex-col items-center gap-[16px]">
+        <ProblemProcessStep number="1" title="Question documents">
+          <p>Teachers had their own question documents ready to use, either from their schools or provided by the government. These documents contained multiple-choice questions, usually ranging from 20 to 50 questions.</p>
+        </ProblemProcessStep>
+        <ProblemProcessStep number="2" title="Question import template">
+          <p>We provided a template for teachers to use when uploading questions to our platform, so the questions could be recognized by our system. However, this created additional work for them.</p>
+          <ProblemInsightCallout />
+        </ProblemProcessStep>
+        <ProblemProcessStep number="3" title="Upload the completed template">
+          <p>Then, they uploaded the completed template to our platform in the correct format.</p>
+        </ProblemProcessStep>
       </div>
-    </div>,
-    <div id="early-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
-      <TextSection title="Early Solution" major>
-        <p>The first version focused on standardization because schools used different document formats, so Quipper needed one format that the system could understand. The template helped solve this by giving teachers a fixed structure to follow. They could fill in the required question, such as the question text, answer options, correct answer, and other details. Once the file matched Quipper’s structure, the system could import the questions.</p>
-      </TextSection>
-      <CaseImage src={earlySolutionImage} rounded onClick={onImageClick} />
-      <p className={bodyText}>This was a reasonable first solution, but it still had a clear limitation. Teachers had to adjust their documents to fit Quipper’s format. For teachers who often created questions or already understood the template, this was still usable. But for wider usage, it required too much manual work. The main issue was that teachers still had to do the conversion work themselves.</p>
-      <FlowCard steps={["Download Quipper’s template.", "Open the school’s existing question document.", "Copy the questions manually.", "Upload the completed template."]} />
-      <DesignBlock>
-        <CaseImage src={templateDesignImage} onClick={onImageClick} />
-      </DesignBlock>
-      <div className={`${bodyText} whitespace-pre-wrap`}>
-        <p className="mb-0">For this solution, we did not really solve the teachers’ problem. We only created a workaround that added more work for teachers on top of their existing tasks. Since this became something mandatory in their daily work, the original problem was still there. </p>
-        <p className="mb-0">&nbsp;</p>
-        <p className="italic">Different schools use different document formats for their questions.</p>
-      </div>
-      <TextSection title="New Challenge">
-        <p>How might we reduce the manual work teachers need to do when converting their existing question documents into Quipper’s template?</p>
-      </TextSection>
+      <FlowCard
+        steps={[
+          "Download Quipper’s template.",
+          "Open the school’s existing question document.",
+          "Copy the questions.",
+          "Paste them into the spreadsheet template.",
+          { label: "Repeat the process up to 50 times" },
+          "Upload the completed template.",
+          "Review the uploaded questions.",
+          "Publish the questions.",
+        ]}
+      />
+      <p className={bodyText}>We did not really solve the teachers’ problem. We only created a workaround that added more work for teachers on top of their existing tasks. Since this became something mandatory in their daily work, the original problem was still there.</p>
+      <ProblemQuote>Different schools use different document formats for their questions.</ProblemQuote>
     </div>,
     <div id="first-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <div className="flex w-full flex-col items-center gap-[16px]">
-        <TextSection title="First Solution" major>
+        <TextSection title="Patching up repetitive workflow" major>
           <p>When AI became more common, we saw a chance to reduce the manual formatting work. Instead of asking teachers to move their questions into Quipper’s template by themselves, we tried using AI to help convert their documents. The Operations team built GPTs that could change school question documents into Quipper’s required template. </p>
         </TextSection>
         <CaseImage src={gptSolutionImage} onClick={onImageClick} />
@@ -484,9 +564,7 @@ export function QuipperStudyCase({ onImageClick }: QuipperStudyCaseProps) {
         <p>This showed that the guide alone was not enough because the real issue was the steps asking teachers to switch between too many places to finish one task.</p>
       </div>
       <LearningCard />
-      <TextSection title="New Challenge">
-        <p>How might we bring AI conversion directly into Quipper so teachers can upload their question document and complete the import process in one place?</p>
-      </TextSection>
+      <ChallengeBlock />
     </div>,
     <div id="final-solution" className="flex w-full scroll-mt-[112px] flex-col items-center gap-[32px]">
       <TextSection title="Final Solution" major>

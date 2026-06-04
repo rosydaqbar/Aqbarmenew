@@ -19,9 +19,7 @@ heroVideo: ../assets/study-case-quipper/Quipper.mp4
 ## Media
 
 - Hero video: `../assets/study-case-quipper/Quipper.mp4`
-- Problem image: `../assets/study-case-quipper/problem-document.png`
-- Early solution image: `../assets/study-case-quipper/template-example.png`
-- Template design image: `../assets/study-case-quipper/template-design.png`
+- Problem flow image: `../assets/study-case-quipper/problem-flow.png`
 - GPT solution image: `../assets/study-case-quipper/gpt-solution.png`
 - GPT design image: `../assets/study-case-quipper/gpt-design.png`
 - GPT result image: `../assets/study-case-quipper/gpt-result.png`
@@ -58,40 +56,44 @@ Different schools use different document formats for their questions.
 
 This creates a problem for the system because Quipper needs clean and structured data to import questions correctly.
 
-Image: `../assets/study-case-quipper/problem-document.png`
+But Quipper needed one format that the system could understand. The template helped solve this by giving teachers a fixed structure to follow.
 
-## Challenge
+Image: `../assets/study-case-quipper/problem-flow.png`
 
-How might we standardize different school question document formats so Quipper can import them correctly?
+Teachers had to adjust their documents to fit Quipper’s format. For teachers who often created questions or already understood the template, this was still usable. However, for wider usage, it required too much manual work. The main issue was that teachers still had to handle the conversion themselves.
 
-## Early Solution
+### Problem Breakdown
 
-The first version focused on standardization because schools used different document formats, so Quipper needed one format that the system could understand. The template helped solve this by giving teachers a fixed structure to follow. They could fill in the required question, such as the question text, answer options, correct answer, and other details. Once the file matched Quipper’s structure, the system could import the questions.
+1. Question documents
 
-Image: `../assets/study-case-quipper/template-example.png`
+Teachers had their own question documents ready to use, either from their schools or provided by the government. These documents contained multiple-choice questions, usually ranging from 20 to 50 questions.
 
-This was a reasonable first solution, but it still had a clear limitation. Teachers had to adjust their documents to fit Quipper’s format. For teachers who often created questions or already understood the template, this was still usable. But for wider usage, it required too much manual work. The main issue was that teachers still had to do the conversion work themselves.
+2. Question import template
 
-### Early Solution Flow
+We provided a template for teachers to use when uploading questions to our platform, so the questions could be recognized by our system. However, this created additional work for them.
+
+Callout: Based on our internal observation, each question can take around **20 seconds to 3 minutes** to input, whether into our question import template or directly into our platform!
+
+3. Upload the completed template
+
+Then, they uploaded the completed template to our platform in the correct format.
+
+### Problem Flow
 
 1. Download Quipper’s template.
 2. Open the school’s existing question document.
-3. Copy the questions manually.
-4. Upload the completed template.
+3. Copy the questions.
+4. Paste them into the spreadsheet template.
+5. Repeat the process up to 50 times
+6. Upload the completed template.
+7. Review the uploaded questions.
+8. Publish the questions.
 
-### Early Solution Design
-
-Image: `../assets/study-case-quipper/template-design.png`
-
-For this solution, we did not really solve the teachers’ problem. We only created a workaround that added more work for teachers on top of their existing tasks. Since this became something mandatory in their daily work, the original problem was still there.
+We did not really solve the teachers’ problem. We only created a workaround that added more work for teachers on top of their existing tasks. Since this became something mandatory in their daily work, the original problem was still there.
 
 _Different schools use different document formats for their questions._
 
-## New Challenge
-
-How might we reduce the manual work teachers need to do when converting their existing question documents into Quipper’s template?
-
-## First Solution
+## Patching up repetitive workflow
 
 When AI became more common, we saw a chance to reduce the manual formatting work. Instead of asking teachers to move their questions into Quipper’s template by themselves, we tried using AI to help convert their documents. The Operations team built GPTs that could change school question documents into Quipper’s required template.
 
@@ -126,9 +128,9 @@ The GPT experience helped us learn something important because AI could help fix
 
 We need a smoother experience that allows users to upload their own question documents into Quipper.
 
-## New Challenge
+## Challenge
 
-How might we bring AI conversion directly into Quipper so teachers can upload their question document and complete the import process in one place?
+How might we reduce the manual work teachers need to do when converting their existing question documents into Quipper’s template?
 
 ## Final Solution
 

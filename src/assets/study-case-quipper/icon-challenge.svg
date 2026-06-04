@@ -1,0 +1,26 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon_challenge">
+<rect width="24" height="24" fill="#D3C241"/>
+<path id="Vector" d="M18 2V6H22" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_2" d="M8 2H12" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_3" d="M6 4V4.01" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_4" d="M4 6V6.01" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_5" d="M2 8V16" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_6" d="M22 12V16" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_7" d="M4.01001 18H4.00001" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_8" d="M20.01 18H20" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_9" d="M6.01001 20H6.00001" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_10" d="M18.01 20H18" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_11" d="M8 22H16" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_12" d="M10 6H12" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_13" d="M10 18H14" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_14" d="M18 12V14" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_15" d="M6 10V14" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_16" d="M8.01001 8H8.00001" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_17" d="M8.01001 16H8.00001" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_18" d="M16.01 16H16" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_19" d="M12.01 12H12" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_20" d="M14.01 10H14" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_21" d="M16.01 8H16" stroke="var(--stroke-0, #1C1F21)" stroke-width="2" stroke-linecap="square"/>
+</g>
+</svg>
